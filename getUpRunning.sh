@@ -21,5 +21,5 @@ do
 	RUN=$((RUN+1))
 done
 
-cat /tmp/getUpRunning.tmp |sort -r
+cat /tmp/getUpRunning.tmp |sort -r >$1/$(date +%Y%h%d)U.txt
 rm /tmp/getUpRunning.tmp
