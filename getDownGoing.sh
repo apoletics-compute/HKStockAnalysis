@@ -23,4 +23,4 @@ done
 
 cat /tmp/getDownGoing.tmp | sed '/^\s*$/d' |sort -r >$1/$(date +%Y%h%d)D.txt
 rm /tmp/getDownGoing.tmp
-/home/apoletics_compute/HKStockAnalysis/getai.py -l 0 -f "$1/$(date +%Y%h%d)D.txt"
+/home/apoletics_compute/HKStockAnalysis/getai.py -l 0 -f "$1/$(date +%Y%h%d)D.txt"  -s $2 -r $3 -p $4

@@ -29,8 +29,11 @@ def main(argv):
    largerthan = ''
    filename = ''
    body = ''
+   sender = ''
+   recipient = ''
+   emailpassword = ''
    try:
-      opts, args = getopt.getopt(argv,"hl:f:",["largerthan=","filename="])
+      opts, args = getopt.getopt(argv,"hl:f:s:r:p:",["largerthan=","filename=","sender=","recipient=","emailpassword="])
    except getopt.GetoptError:
       print 'test.py -l <larger than> -f <filename>'
       sys.exit(2)
@@ -42,7 +45,16 @@ def main(argv):
          largerthan = arg
       elif opt in ("-f", "--filename"):
          filename = arg
+      elif opt in ("-s", "--sender"):
+         sender = arg
+      elif opt in ("-r", "--recipient"):
+         recipient = arg
+      elif opt in ("-p", "--emailpassword"):
+         emailpassword = arg
    print 'largerthan: ', largerthan 
+   print 'sender ', sender
+   print 'recipient', recipient
+   print 'emailpassword', emailpassword
    print 'filename: ', filename 
    with open(filename, 'r') as myfile:
       for data in myfile:
@@ -64,7 +76,7 @@ def main(argv):
    outputfile = open(filename+".result","w")
    outputfile.write(body)
    outputfile.close()
-   send_email("apoletics.compute@gmail.com","!su051565","apoletics@gmail.com",subject,body)
+   send_email(sender,emailpassword,recipient,subject,body)
 if __name__ == "__main__":
    main(sys.argv[1:])
 
