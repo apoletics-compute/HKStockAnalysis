@@ -42,6 +42,8 @@ def main(argv):
          largerthan = arg
       elif opt in ("-f", "--filename"):
          filename = arg
+   print 'largerthan: ', largerthan 
+   print 'filename: ', filename 
    with open(filename, 'r') as myfile:
       for data in myfile:
          list=data.rstrip('\n').split(" ")
@@ -54,11 +56,14 @@ def main(argv):
                reader = csv.reader(csvfile)
                for row in reader:
                   if(int(list[1]) == int(row[0])):
-                     body+=list[0] + ' '+ row[0].strip() + ' '+ row[1].strip() +' ' + row[2].strip() + ' ' + row[3].strip() +'\n'
+                     body+=os.path.splitext(os.path.basename(filename))[0][:-1]+','+list[0] + ','+ row[0].strip() + ','+ row[1].strip() +',' + row[2].strip() + ',' + row[3].strip() +'\n'
                      break
    subject=os.path.splitext(os.path.basename(filename))[0] + ' report'
    print subject
    print body
+   outputfile = open(filename+".result","w")
+   outputfile.write(body)
+   outputfile.close()
    send_email("apoletics.compute@gmail.com","!su051565","apoletics@gmail.com",subject,body)
 if __name__ == "__main__":
    main(sys.argv[1:])

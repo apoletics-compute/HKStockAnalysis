@@ -24,3 +24,4 @@ done
 cat /tmp/getUpRunning.tmp |sort -r >$1/$(date +%Y%h%d)U.txt
 rm /tmp/getUpRunning.tmp
 /home/apoletics_compute/HKStockAnalysis/getai.py -l 3 -f "$1/$(date +%Y%h%d)U.txt"
+cat "$1/$(date +%Y%h%d)U.txt.result" | ./updateGoogleSpreadSheet.py --noauth_local_webserver
