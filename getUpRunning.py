@@ -145,7 +145,7 @@ def main(argv):
     for item in outputlist:
         outputfile.write("%s,%s,%s\n" % (item[0],item[1],item[2]))
     outputfile.close()
-    subject=today.strftime("%Y%h%d")+'U'
+    subject="AASTOCK TIPS:" +today.strftime("%Y%h%d")+'U'
     send_email(sender,emailpassword,recipient,subject,body)
     print body
     credentials = get_credentials()
