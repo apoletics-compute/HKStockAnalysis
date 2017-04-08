@@ -158,7 +158,7 @@ def main(argv):
                 for row in reader:
                     if(int(item[1]) == int(row[0])):
                         price=getPrice(int(row[0]))
-                        body+=today.strftime("%Y%h%d") + ','+ str(item[0])+','+row[0].strip() + ','+ row[1].strip() +',' + row[2].strip() + ',' + row[3].strip() + ',' + price + ',' + str( float(price)* float(row[3].strip()))+ ','+ '\n'
+                        body+=today.strftime("%Y%h%d") + ','+ str(item[0])+','+row[0].strip() + ','+ row[1].strip() +',' + row[2].strip() + ',' + row[3].strip() + ',' + price + ',' + str( float(price)* float(row[3].strip()))+ ','+ item[2]+ '\n'
                         break
     for item in outputlist:
         outputfile.write("%s,%s,%s\n" % (item[0],item[1],item[2]))
